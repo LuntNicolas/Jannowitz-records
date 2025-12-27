@@ -13,6 +13,9 @@ importers:
       '@gsap/react':
         specifier: ^2.1.2
         version: 2.1.2(gsap@3.14.2)(react@19.2.3)
+      '@sanity/image-url':
+        specifier: ^2.0.2
+        version: 2.0.2
       gsap:
         specifier: ^3.14.2
         version: 3.14.2
@@ -32,6 +35,12 @@ importers:
         specifier: ^10.0.1
         version: 10.0.1(react@19.2.3)
     devDependencies:
+      '@sanity/cli':
+        specifier: ^5.1.0
+        version: 5.1.0(@types/node@20.19.27)(babel-plugin-react-compiler@1.0.0)(lightningcss@1.30.2)(react@19.2.3)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)
+      '@sanity/client':
+        specifier: ^7.13.2
+        version: 7.13.2(debug@4.4.3)
       '@tailwindcss/postcss':
         specifier: ^4
         version: 4.1.18
