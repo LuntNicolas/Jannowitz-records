@@ -3,6 +3,7 @@ import {Geist, Geist_Mono} from "next/font/google";
 import localFont from 'next/font/local';
 import "./globals.css";
 import Menu from "@/components/Menu";
+import {SanityLive} from "@/sanity/live";
 
 const calora = localFont({
     src: [
@@ -57,6 +58,7 @@ export default function RootLayout({
         >
         <Menu/>
         {children}
+        <SanityLive/>
         </body>
         </html>
     );

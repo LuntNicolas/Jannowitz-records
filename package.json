@@ -1,5 +1,5 @@
 {
-  "name": "jannowitz-records-monorepo",
+  "name": "jannowitz-records",
   "private": true,
   "scripts": {
     "dev:frontend": "pnpm --filter frontend dev",

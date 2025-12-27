@@ -1,15 +1,15 @@
 import React from 'react'
 import Hero from "@/components/Hero";
 import LandingRelease from "@/components/Landing-release";
-import {type SanityDocument} from 'next-sanity'
+import Image from "next/image";
 
-import {client} from '@/sanity/lib/client'
-import {releaseQuery} from "@/sanity/lib/queries";
-
-const options = {next: {revalidate: 30}}
+import {releaseQuery} from "@/sanity/queries";
+import {sanityFetch} from "@/sanity/live";
+import {urlFor} from "@/sanity/image";
 
 async function Page() {
-    const releases = await client.fetch<SanityDocument[]>(releaseQuery, {}, options)
+    const {data: releases} = await sanityFetch({query: releaseQuery})
+
     return (
         <>
             <Hero/>
