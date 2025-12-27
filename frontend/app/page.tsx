@@ -4,14 +4,12 @@ import LandingRelease from "@/components/Landing-release";
 import {type SanityDocument} from 'next-sanity'
 
 import {client} from '@/sanity/lib/client'
+import {releaseQuery} from "@/sanity/lib/queries";
 
-const releaseQuery = `  *[_type == "releases"]{
-    _id, catalog, cover, title, links
-  }`
 const options = {next: {revalidate: 30}}
 
 async function Page() {
-    const releases = await client.fetch <SanityDocument[]>(releaseQuery, {}, options)
+    const releases = await client.fetch<SanityDocument[]>(releaseQuery, {}, options)
     return (
         <>
             <Hero/>
