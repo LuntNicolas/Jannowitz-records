@@ -180,7 +180,7 @@ export declare const internalGroqTypeReferenceTo: unique symbol;
 
 // Source: ../frontend/sanity/queries.ts
 // Variable: releaseQuery
-// Query: *[_type == "releases"]{    _id, catalog, cover, title, links    }
+// Query: *[_type == "releases"] | order(_createdAt desc) [0...5]{    _id, catalog, cover, title, links    }
 export type ReleaseQueryResult = Array<{
   _id: string;
   catalog: number | null;
@@ -204,6 +204,6 @@ export type ReleaseQueryResult = Array<{
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    '\n    *[_type == "releases"]{\n    _id, catalog, cover, title, links\n    }\n ': ReleaseQueryResult;
+    '\n    *[_type == "releases"] | order(_createdAt desc) [0...5]{\n    _id, catalog, cover, title, links\n    }\n ': ReleaseQueryResult;
   }
 }
