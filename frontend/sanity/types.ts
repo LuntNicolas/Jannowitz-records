@@ -20,6 +20,39 @@ export type SanityImageAssetReference = {
   [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
 };
 
+export type Partners = {
+  _id: string;
+  _type: "partners";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  partner?: string;
+  logo?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  link?: string;
+};
+
+export type SanityImageCrop = {
+  _type: "sanity.imageCrop";
+  top?: number;
+  bottom?: number;
+  left?: number;
+  right?: number;
+};
+
+export type SanityImageHotspot = {
+  _type: "sanity.imageHotspot";
+  x?: number;
+  y?: number;
+  height?: number;
+  width?: number;
+};
+
 export type Releases = {
   _id: string;
   _type: "releases";
@@ -41,22 +74,6 @@ export type Releases = {
     spotify?: string;
     _key: string;
   }>;
-};
-
-export type SanityImageCrop = {
-  _type: "sanity.imageCrop";
-  top?: number;
-  bottom?: number;
-  left?: number;
-  right?: number;
-};
-
-export type SanityImageHotspot = {
-  _type: "sanity.imageHotspot";
-  x?: number;
-  y?: number;
-  height?: number;
-  width?: number;
 };
 
 export type SanityImagePaletteSwatch = {
@@ -163,9 +180,10 @@ export type Slug = {
 
 export type AllSanitySchemaTypes =
   | SanityImageAssetReference
-  | Releases
+  | Partners
   | SanityImageCrop
   | SanityImageHotspot
+  | Releases
   | SanityImagePaletteSwatch
   | SanityImagePalette
   | SanityImageDimensions
@@ -180,7 +198,7 @@ export declare const internalGroqTypeReferenceTo: unique symbol;
 
 // Source: ../frontend/sanity/queries.ts
 // Variable: releaseQuery
-// Query: *[_type == "releases"] | order(_createdAt desc) [0...5]{    _id, catalog, cover, title, links    }
+// Query: *[_type == "releases"] | order(_createdAt desc) [0...5]{        _id, catalog, cover, title, links    }
 export type ReleaseQueryResult = Array<{
   _id: string;
   catalog: number | null;
@@ -200,10 +218,27 @@ export type ReleaseQueryResult = Array<{
   }> | null;
 }>;
 
+// Source: ../frontend/sanity/queries.ts
+// Variable: partnerQuery
+// Query: *[_type == "partners"]{        _id, partner, logo, link    }
+export type PartnerQueryResult = Array<{
+  _id: string;
+  partner: string | null;
+  logo: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  link: string | null;
+}>;
+
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    '\n    *[_type == "releases"] | order(_createdAt desc) [0...5]{\n    _id, catalog, cover, title, links\n    }\n ': ReleaseQueryResult;
+    '\n    *[_type == "releases"] | order(_createdAt desc) [0...5]{\n        _id, catalog, cover, title, links\n    }\n ': ReleaseQueryResult;
+    '\n    *[_type == "partners"]{\n        _id, partner, logo, link\n    }\n': PartnerQueryResult;
   }
 }

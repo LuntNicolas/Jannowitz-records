@@ -1,12 +1,16 @@
 "use client"
 
-import React, {useState, useRef, useEffect, Fragment} from 'react'
+import React, {useState, useRef, useEffect} from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import gsap from 'gsap';
 import {useGSAP} from "@gsap/react";
 import {socialLinks} from "@/constants";
 import {menuLinks} from "@/constants";
+import {SplitText} from "gsap/SplitText";
+import {Observer} from "gsap/Observer";
+
+gsap.registerPlugin(SplitText, Observer)
 
 const Menu = () => {
     const container = useRef(null);
@@ -37,6 +41,39 @@ const Menu = () => {
                     delay: -0.85,
                     opacity: 1,
                 }, "-=0.3")
+
+        const links = gsap.utils.toArray<HTMLElement>(".pages-links");
+
+        links.forEach((link) => {
+            const topText = link.querySelector(".menu-text-top");
+            const bottomText = link.querySelector(".menu-text-bottom");
+
+            // Splitte beide Texte in Buchstaben
+            const splitTop = new SplitText(topText, {type: "chars"});
+            const splitBottom = new SplitText(bottomText, {type: "chars"});
+
+            // Initialzustand: Bottom-Texte sind weit unten
+            gsap.set(splitBottom.chars, {y: "100%"});
+
+            const hoverTl = gsap.timeline({paused: true});
+
+            hoverTl
+                .to(splitTop.chars, {
+                    y: "-100%",
+                    duration: 0.5,
+                    ease: "power3.inOut",
+                    stagger: 0.02,
+                })
+                .to(splitBottom.chars, {
+                    y: "0%",
+                    duration: 0.5,
+                    ease: "power3.inOut",
+                    stagger: 0.02,
+                }, 0); // Startet gleichzeitig mit der ersten Animation
+
+            link.addEventListener("mouseenter", () => hoverTl.play());
+            link.addEventListener("mouseleave", () => hoverTl.reverse());
+        });
     }, {scope: container});
     //
     useEffect(() => {
@@ -85,8 +122,10 @@ const Menu = () => {
                             <div className="menu-link-item-holder relative text-center"
                                  onClick={toggleMenu}>
                                 <Link href={{pathname: link.path}}
-                                      className="text-white text-7xl md:text-8xl transition duration-500 ease-in-out hover:opacity-100">
-                                    {link.label}
+                                      className="text-white text-7xl md:text-8xl">
+                                    <span className="wrapper">
+                                        <span className="">{link.label}</span>
+                                    </span>
                                 </Link>
                             </div>
                         </div>
