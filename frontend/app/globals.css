@@ -10,6 +10,7 @@
 @theme {
     --color-background: var(--background);
     --color-foreground: var(--foreground);
+    --color-red-100: #871010;
     --font-sans: var(--font-gotham);
     --font-calora: var(--font-calora-normal);
 
@@ -42,8 +43,20 @@ body {
 
 @layer components {
 
+    .wrapper {
+        @apply relative flex items-center justify-center overflow-hidden;
+    }
+
     .slider-container {
         @apply flex whitespace-nowrap;
+    }
+
+    .slider-overlay {
+        @apply relative md:w-130 md:h-130 w-100 h-80 overflow-hidden;
+
+        .parallax-img {
+            @apply absolute top-0 md:w-130 w-80 h-full;
+        }
     }
 
     .meta-release {
@@ -51,7 +64,7 @@ body {
     }
 
     .gradient-edge {
-        @apply w-36 h-full absolute bottom-0 z-20
+        @apply md:w-100 w-30 h-full absolute bottom-0 z-20
     }
 
     .gradient-edge:nth-of-type(1) {
@@ -103,4 +116,7 @@ body {
         }
     }
     /* marquee end */
+    .footer-container {
+        @apply w-screen h-96 flex justify-center items-center
+    }
 }

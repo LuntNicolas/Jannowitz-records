@@ -21,7 +21,6 @@ const Menu = () => {
     const tl = useRef<gsap.core.Timeline | null>(null);
 
     useGSAP(() => {
-        gsap.set("#overlay-menu", {height: 0})
         //gsap.set(".menu-link-item-holder", {y: 75, opacity: 0})
 
         tl.current = gsap.timeline({paused: true})
@@ -42,38 +41,36 @@ const Menu = () => {
                     opacity: 1,
                 }, "-=0.3")
 
-        const links = gsap.utils.toArray<HTMLElement>(".pages-links");
+        const menuItems = gsap.utils.toArray<HTMLElement>(".menu-link-item-holder")
 
-        links.forEach((link) => {
-            const topText = link.querySelector(".menu-text-top");
-            const bottomText = link.querySelector(".menu-text-bottom");
+        menuItems.forEach((item) => {
+            const topText = item.querySelector(".menu-text-top") as HTMLElement;
+            const bottomText = item.querySelector(".menu-text-bottom") as HTMLElement;
 
-            // Splitte beide Texte in Buchstaben
-            const splitTop = new SplitText(topText, {type: "chars"});
-            const splitBottom = new SplitText(bottomText, {type: "chars"});
-
-            // Initialzustand: Bottom-Texte sind weit unten
-            gsap.set(splitBottom.chars, {y: "100%"});
+            const splitTop = SplitText.create(topText, {type: "chars"});
+            const splitBottom = SplitText.create(bottomText, {type: "chars"});
 
             const hoverTl = gsap.timeline({paused: true});
 
             hoverTl
                 .to(splitTop.chars, {
-                    y: "-100%",
+                    yPercent: "-100",
                     duration: 0.5,
                     ease: "power3.inOut",
                     stagger: 0.02,
                 })
                 .to(splitBottom.chars, {
-                    y: "0%",
+                    yPercent: "-100",
                     duration: 0.5,
                     ease: "power3.inOut",
                     stagger: 0.02,
-                }, 0); // Startet gleichzeitig mit der ersten Animation
+                }, 0);
 
-            link.addEventListener("mouseenter", () => hoverTl.play());
-            link.addEventListener("mouseleave", () => hoverTl.reverse());
-        });
+            item.addEventListener("mouseenter", () => hoverTl.play());
+            item.addEventListener("mouseleave", () => hoverTl.reverse());
+        })
+
+
     }, {scope: container});
     //
     useEffect(() => {
@@ -115,7 +112,7 @@ const Menu = () => {
             </nav>
 
             <div id="overlay-menu"
-                 className="fixed top-0 left-0 w-screen h-screen p-2 bg-black z-10 flex items-center flex-col overflow-hidden">
+                 className="fixed top-0 left-0 w-screen h-0 p-2 bg-black z-10 flex items-center flex-col overflow-hidden">
                 <div className="font-calora pt-25">
                     {menuLinks.map((link, index) => (
                         <div className="menu-link-item" key={index}>
@@ -123,8 +120,9 @@ const Menu = () => {
                                  onClick={toggleMenu}>
                                 <Link href={{pathname: link.path}}
                                       className="text-white text-7xl md:text-8xl">
-                                    <span className="wrapper">
-                                        <span className="">{link.label}</span>
+                                    <span className="wrapper ">
+                                        <span className="menu-text-top">{link.label}</span>
+                                        <span className="menu-text-bottom absolute top-23"> {link.label}</span>
                                     </span>
                                 </Link>
                             </div>

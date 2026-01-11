@@ -5,7 +5,7 @@ import Link from 'next/link'
 import {ReleaseQueryResult} from '@/sanity/types'
 import {urlFor} from "@/sanity/image";
 import Image from 'next/image';
-import {useEffect, useRef} from 'react'
+import {useRef} from 'react'
 import gsap from 'gsap';
 import {useGSAP} from "@gsap/react";
 import {Observer} from "gsap/Observer"
@@ -35,10 +35,28 @@ const LandingRelease = ({releases}: Props) => {
 
     useGSAP(() => {
         const items = gsap.utils.toArray<HTMLElement>(".slider-item");
+        const images = gsap.utils.toArray<HTMLElement>(".parallax-img");
 
         const loop = horizontalLoop(items, {repeat: -1})
         let slow = gsap.to(loop, {timeScale: 0, duration: 0.5});
         loop.timeScale(0);
+
+        // const parallaxImages = images.map(image => {
+        //         return gsap.quickSetter(image, "xPercent");
+        //     }
+        // );
+        //
+        // gsap.ticker.add(() => {
+        //     images.forEach((image, i) => {
+        //         const rect = image.getBoundingClientRect();
+        //         const winW = window.innerWidth;
+        //
+        //         const screenProgress = (rect.left + rect.width / 2) / winW;
+        //
+        //         const movement = (screenProgress - 0.5) * 30;
+        //         parallaxImages[i](movement);
+        //     });
+        // });
 
         Observer.create({
             target: ".slider-container",
@@ -46,9 +64,8 @@ const LandingRelease = ({releases}: Props) => {
             wheelSpeed: -1,
             onChange: self => {
                 if (Math.abs(self.deltaX) > Math.abs(self.deltaY)) {
-                    // Nur dann bewegen wir den Loop
                     loop.timeScale(-self.deltaX);
-                    slow.invalidate().restart(); // Abbrems-Animation starten
+                    slow.invalidate().restart();
                 }
             }
         });
@@ -93,10 +110,10 @@ const LandingRelease = ({releases}: Props) => {
                     <ul className="slider-container">
                         {releases.map((release) => (
                             <li key={release._id}
-                                className="slider-item flex flex-col gap-2 px-10 md:px-15">
+                                className="slider-item flex flex-col gap-2 md:px-7">
                                 {release.cover ? (
                                     <div className="slider-overlay">
-                                        <div className="relative md:w-100 md:h-100 w-80 h-80">
+                                        <div className="parallax-img">
                                             <Image
                                                 src={urlFor(release.cover).width(width).height(height).url()}
                                                 alt={release.title || "Release Cover"}
