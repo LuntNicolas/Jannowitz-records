@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-    --background: #ffffff;
-    --foreground: #171717;
+    --background: #0B0D10;
+    --foreground: #0B0D10;
     --font-gotham: "Gotham", sans-serif;
     --font-calora-normal: "Calora", serif;
 }
@@ -10,7 +10,7 @@
 @theme {
     --color-background: var(--background);
     --color-foreground: var(--foreground);
-    --color-red-100: #871010;
+    --color-red-100: #7A1F26;
     --font-sans: var(--font-gotham);
     --font-calora: var(--font-calora-normal);
 
@@ -29,8 +29,8 @@
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --background: #0a0a0a;
-        --foreground: #ededed;
+        --background: #0B0D10;
+        --foreground: #0B0D10;
     }
 }
 

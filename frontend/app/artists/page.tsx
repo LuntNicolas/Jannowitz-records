@@ -1,8 +1,15 @@
 import React from 'react'
+import {sanityFetch} from "@/sanity/live";
+import {artistQuery} from "@/sanity/queries";
+import Artists from "@/components/artists";
 
-const Page = () => {
+
+async function Page() {
+    const {data: artists} = await sanityFetch({query: artistQuery})
+
     return (
-        <div>Page</div>
+        <Artists artists={artists}/>
     )
 }
+
 export default Page

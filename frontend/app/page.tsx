@@ -3,8 +3,7 @@ import Hero from "@/components/Hero";
 import LandingRelease from "@/components/Landing-release";
 import Image from "next/image";
 
-import {releaseQuery} from "@/sanity/queries";
-import {partnerQuery} from "@/sanity/queries";
+import {releaseQuery, partnerQuery} from "@/sanity/queries";
 import {sanityFetch} from "@/sanity/live";
 import Partners from "@/components/Partners";
 

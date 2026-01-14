@@ -94,7 +94,7 @@ const LandingRelease = ({releases}: Props) => {
 
 
     return (
-        <section ref={container} className="h-screen">
+        <section ref={container} className="h-screen ">
             <div className="flex justify-center md:justify-between m-10 items-center">
                 <div className="flex flex-col text-center md:text-left">
                     <h1 className="text-white md:text-3xl text-xl">Our latest Releases</h1>
@@ -135,8 +135,8 @@ const LandingRelease = ({releases}: Props) => {
                     </ul>
                 </div>
             </div>
-            <div className="flex md:hidden justify-center m-10">
-                <Link className="whitespace-nowrap" href="/releases">View all &#8594;</Link>
+            <div className="flex md:hidden justify-center m-10 ">
+                <Link className="whitespace-nowrap text-white" href="/releases">View all &#8594;</Link>
             </div>
         </section>
     )

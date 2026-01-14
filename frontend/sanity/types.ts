@@ -20,21 +20,65 @@ export type SanityImageAssetReference = {
   [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
 };
 
-export type Partners = {
+export type SanityFileAssetReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "sanity.fileAsset";
+};
+
+export type Artists = {
   _id: string;
-  _type: "partners";
+  _type: "artists";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  partner?: string;
-  logo?: {
+  name?: string;
+  slug?: Slug;
+  profileImage?: {
     asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
   };
-  link?: string;
+  bio?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  pressKit?: {
+    asset?: SanityFileAssetReference;
+    media?: unknown;
+    _type: "file";
+  };
+  links?: Array<{
+    platform?:
+      | "Spotify"
+      | "SoundCloud"
+      | "Beatport"
+      | "Bandcamp"
+      | "Instagram"
+      | "TikTok"
+      | "FaceBook"
+      | "Youtube";
+    url?: string;
+    _type: "socialLink";
+    _key: string;
+  }>;
 };
 
 export type SanityImageCrop = {
@@ -51,6 +95,29 @@ export type SanityImageHotspot = {
   y?: number;
   height?: number;
   width?: number;
+};
+
+export type Slug = {
+  _type: "slug";
+  current?: string;
+  source?: string;
+};
+
+export type Partners = {
+  _id: string;
+  _type: "partners";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  partner?: string;
+  logo?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  link?: string;
 };
 
 export type Releases = {
@@ -172,17 +239,14 @@ export type Geopoint = {
   alt?: number;
 };
 
-export type Slug = {
-  _type: "slug";
-  current?: string;
-  source?: string;
-};
-
 export type AllSanitySchemaTypes =
   | SanityImageAssetReference
-  | Partners
+  | SanityFileAssetReference
+  | Artists
   | SanityImageCrop
   | SanityImageHotspot
+  | Slug
+  | Partners
   | Releases
   | SanityImagePaletteSwatch
   | SanityImagePalette
@@ -191,8 +255,7 @@ export type AllSanitySchemaTypes =
   | SanityFileAsset
   | SanityAssetSourceData
   | SanityImageAsset
-  | Geopoint
-  | Slug;
+  | Geopoint;
 
 export declare const internalGroqTypeReferenceTo: unique symbol;
 
@@ -234,11 +297,65 @@ export type PartnerQueryResult = Array<{
   link: string | null;
 }>;
 
+// Source: ../frontend/sanity/queries.ts
+// Variable: artistQuery
+// Query: *[_type == "artists"]{      _id,       name,       slug,       profileImage,      bio,       pressKit,       links    }
+export type ArtistQueryResult = Array<{
+  _id: string;
+  name: string | null;
+  slug: Slug | null;
+  profileImage: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  bio: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }> | null;
+  pressKit: {
+    asset?: SanityFileAssetReference;
+    media?: unknown;
+    _type: "file";
+  } | null;
+  links: Array<{
+    platform?:
+      | "Bandcamp"
+      | "Beatport"
+      | "FaceBook"
+      | "Instagram"
+      | "SoundCloud"
+      | "Spotify"
+      | "TikTok"
+      | "Youtube";
+    url?: string;
+    _type: "socialLink";
+    _key: string;
+  }> | null;
+}>;
+
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     '\n    *[_type == "releases"] | order(_createdAt desc) [0...5]{\n        _id, catalog, cover, title, links\n    }\n ': ReleaseQueryResult;
     '\n    *[_type == "partners"]{\n        _id, partner, logo, link\n    }\n': PartnerQueryResult;
+    '\n    *[_type == "artists"]{\n      _id, \n      name, \n      slug, \n      profileImage,\n      bio, \n      pressKit, \n      links\n    }\n': ArtistQueryResult;
   }
 }

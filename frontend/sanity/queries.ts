@@ -11,3 +11,15 @@ export const partnerQuery = defineQuery(`
         _id, partner, logo, link
     }
 `)
+
+export const artistQuery = defineQuery(`
+    *[_type == "artists"]{
+      _id, 
+      name, 
+      slug, 
+      profileImage,
+      bio, 
+      pressKit, 
+      links
+    }
+`)
