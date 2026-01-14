@@ -8,7 +8,7 @@ async function Page() {
     const {data: artists} = await sanityFetch({query: artistQuery})
 
     return (
-        <Artists artists={artists}/>
+        <Artists/>
     )
 }
 
