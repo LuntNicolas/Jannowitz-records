@@ -8,7 +8,7 @@ import {useGSAP} from "@gsap/react";
 import {socialLinks} from "@/constants";
 import {menuLinks} from "@/constants";
 import {SplitText} from "gsap/SplitText";
-import {Observer} from "gsap/Observer";
+import Observer from "gsap/Observer";
 
 gsap.registerPlugin(SplitText, Observer)
 
@@ -112,7 +112,7 @@ const Menu = () => {
             </nav>
 
             <div id="overlay-menu"
-                 className="fixed top-0 left-0 w-screen h-0 p-2 bg-background z-10 flex items-center flex-col overflow-hidden">
+                 className="fixed top-0 left-0 w-screen h-0 p-2 bg-background  z-10 flex items-center flex-col overflow-hidden">
                 <div className="font-calora pt-25">
                     {menuLinks.map((link, index) => (
                         <div className="menu-link-item" key={index}>
