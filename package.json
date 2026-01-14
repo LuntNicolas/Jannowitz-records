@@ -1,6 +1,7 @@
 {
   "name": "jannowitz-records",
   "private": true,
+  "packageManager": "pnpm@9.15.4",
   "scripts": {
     "dev:frontend": "pnpm --filter frontend dev",
     "dev:studio": "pnpm --filter studio dev",
