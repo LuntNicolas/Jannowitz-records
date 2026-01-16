@@ -66,8 +66,10 @@ const Menu = () => {
                     stagger: 0.02,
                 }, 0);
 
-            item.addEventListener("mouseenter", () => hoverTl.play());
-            item.addEventListener("mouseleave", () => hoverTl.reverse());
+            if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+                item.addEventListener("mouseenter", () => hoverTl.play());
+                item.addEventListener("mouseleave", () => hoverTl.reverse());
+            }
         })
 
 
