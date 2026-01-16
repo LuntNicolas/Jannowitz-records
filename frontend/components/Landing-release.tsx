@@ -94,7 +94,7 @@ const LandingRelease = ({releases}: Props) => {
 
 
     return (
-        <section ref={container} className="h-screen ">
+        <section ref={container} className="h-auto ">
             <div className="flex justify-center md:justify-between m-10 items-center">
                 <div className="flex flex-col text-center md:text-left">
                     <h1 className="text-white md:text-3xl text-xl">Our latest Releases</h1>

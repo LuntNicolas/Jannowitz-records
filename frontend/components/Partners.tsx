@@ -13,7 +13,7 @@ const Partners = ({partners}: Props) => {
 
     return (
         <div className="mb-20 relative">
-            <div className="flex justify-center md:justify-between ml-10 mt-[-80] items-center">
+            <div className="flex justify-center md:justify-between md:ml-10 mt-20 items-center">
                 <h1 className="text-white md:text-3xl text-xl">Our Partners</h1>
             </div>
             <div className="gradient-edge"/>
