@@ -2,7 +2,7 @@
 
 import React from 'react'
 import Link from 'next/link'
-import {ReleaseQueryResult} from '@/sanity/types'
+import {LandingReleaseQueryResult} from '@/sanity/types'
 import {urlFor} from "@/sanity/image";
 import Image from 'next/image';
 import {useRef} from 'react'
@@ -15,7 +15,7 @@ import {useMediaQuery} from "react-responsive"
 gsap.registerPlugin(useGSAP, Observer, ScrollTrigger)
 
 interface Props {
-    releases: ReleaseQueryResult
+    releases: LandingReleaseQueryResult
 }
 
 interface HorizontalLoopConfig {

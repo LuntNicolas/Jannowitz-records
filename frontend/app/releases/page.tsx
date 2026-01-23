@@ -1,8 +1,13 @@
 import React from 'react'
+import {sanityFetch} from "@/sanity/live";
+import {landingReleaseQuery} from "@/sanity/queries";
+import Releases from "@/components/releases";
 
-const Page = () => {
+async function Page() {
+    const {data: releases} = await sanityFetch({query: landingReleaseQuery});
     return (
-        <div>Page</div>
+        <Releases releases={releases}/>
     )
 }
+
 export default Page

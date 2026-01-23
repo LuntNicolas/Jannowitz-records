@@ -176,6 +176,7 @@ export type SanityImageMetadata = {
   palette?: SanityImagePalette;
   lqip?: string;
   blurHash?: string;
+  thumbHash?: string;
   hasAlpha?: boolean;
   isOpaque?: boolean;
 };
@@ -259,9 +260,37 @@ export type AllSanitySchemaTypes =
 
 export declare const internalGroqTypeReferenceTo: unique symbol;
 
+type ArrayOf<T> = Array<
+  T & {
+    _key: string;
+  }
+>;
+
+// Source: ../frontend/sanity/queries.ts
+// Variable: landingReleaseQuery
+// Query: *[_type == "releases"] | order(_createdAt desc) [0...5]{        _id, catalog, cover, title, links    }
+export type LandingReleaseQueryResult = Array<{
+  _id: string;
+  catalog: number | null;
+  cover: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  title: string | null;
+  links: Array<{
+    beatport?: string;
+    soundcloud?: string;
+    spotify?: string;
+    _key: string;
+  }> | null;
+}>;
+
 // Source: ../frontend/sanity/queries.ts
 // Variable: releaseQuery
-// Query: *[_type == "releases"] | order(_createdAt desc) [0...5]{        _id, catalog, cover, title, links    }
+// Query: *[_type == "releases"] | order(_createdAt desc){        _id, catalog, cover, title, links    }
 export type ReleaseQueryResult = Array<{
   _id: string;
   catalog: number | null;
@@ -354,7 +383,8 @@ export type ArtistQueryResult = Array<{
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    '\n    *[_type == "releases"] | order(_createdAt desc) [0...5]{\n        _id, catalog, cover, title, links\n    }\n ': ReleaseQueryResult;
+    '\n    *[_type == "releases"] | order(_createdAt desc) [0...5]{\n        _id, catalog, cover, title, links\n    }\n ': LandingReleaseQueryResult;
+    '\n    *[_type == "releases"] | order(_createdAt desc){\n        _id, catalog, cover, title, links\n    }\n ': ReleaseQueryResult;
     '\n    *[_type == "partners"]{\n        _id, partner, logo, link\n    }\n': PartnerQueryResult;
     '\n    *[_type == "artists"]{\n      _id, \n      name, \n      slug, \n      profileImage,\n      bio, \n      pressKit, \n      links\n    }\n': ArtistQueryResult;
   }
