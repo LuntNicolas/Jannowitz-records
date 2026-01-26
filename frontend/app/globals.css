@@ -67,6 +67,10 @@ body {
         @apply md:w-100 w-30 h-full absolute bottom-0 z-20
     }
 
+    .release-information {
+        @apply w-full pt-2;
+    }
+
     .gradient-edge:nth-of-type(1) {
         left: 0;
         background: rgb(0, 0, 0);

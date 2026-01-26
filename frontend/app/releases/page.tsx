@@ -1,10 +1,10 @@
 import React from 'react'
 import {sanityFetch} from "@/sanity/live";
-import {landingReleaseQuery} from "@/sanity/queries";
+import {releaseQuery} from "@/sanity/queries";
 import Releases from "@/components/releases";
 
 async function Page() {
-    const {data: releases} = await sanityFetch({query: landingReleaseQuery});
+    const {data: releases} = await sanityFetch({query: releaseQuery});
     return (
         <Releases releases={releases}/>
     )

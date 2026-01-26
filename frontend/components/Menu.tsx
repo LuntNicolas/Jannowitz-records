@@ -86,7 +86,7 @@ const Menu = () => {
 
     return (
         <div className="menu-container" ref={container}>
-            <nav className="fixed w-screen p-2 grid grid-cols-3 z-20 bg-background">
+            <nav className="fixed top-0 w-screen p-2 grid grid-cols-3 z-20 bg-background">
                 <div className="col-start-2 flex items-center justify-center">
                     <Link href="/">
                         <Image
