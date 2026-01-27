@@ -33,6 +33,16 @@ export const releases = defineType({
             name: 'catalog',
             title: 'Katalog Nummer',
             type: 'number',
+            validation: (Rule) => Rule.required(),
+        }),
+
+        // release date
+        defineField({
+            name: 'releaseDate',
+            title: 'Release Datum',
+            type: 'date',
+            options: {dateFormat: 'DD.MM.YYYY'},
+            validation: (Rule) => Rule.required(),
         }),
 
         // Cover art

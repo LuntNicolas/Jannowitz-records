@@ -8,7 +8,7 @@ export const landingReleaseQuery = defineQuery(`
 
 export const releaseQuery = defineQuery(`
     *[_type == "releases"] | order(_createdAt desc){
-        _id, catalog, cover, title, links
+        _id, catalog, cover, title, links, releaseDate
     }
  `)
 

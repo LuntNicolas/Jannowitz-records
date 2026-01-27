@@ -711,6 +711,13 @@
         },
         "optional": true
       },
+      "releaseDate": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
       "cover": {
         "type": "objectAttribute",
         "value": {
