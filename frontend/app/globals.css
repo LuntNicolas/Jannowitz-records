@@ -76,7 +76,7 @@ body {
     }
 
     .buttons {
-        @apply flex justify-center text-black bg-white py-4 rounded-xl;
+        @apply flex justify-center text-black bg-white py-4 rounded-xl opacity-100 hover:opacity-80 transition-opacity duration-500;
     }
 
     .gradient-edge:nth-of-type(1) {

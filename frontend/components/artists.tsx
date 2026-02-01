@@ -41,11 +41,10 @@ const Artists = ({artists}: Props) => {
                                 ) : (
                                     <p>No image</p>
                                 )}
-
-
+                                
                                 <div className="artist-information ">
                                     <h2 className="text-white">{artist.name}</h2>
-                                    <p className="text-white opacity-50">View more &#x2197;</p>
+                                    <p className="text-white opacity-50">View more &rarr;</p>
                                 </div>
                             </Link>
                         </li>

@@ -74,7 +74,7 @@ const Artist = ({artist}: Props) => {
                     </div>
                     <div className="flex flex-col gap-5">
                         <div className="buttons">
-                            <a href="mailto:Bookings@jannowitz.com ">&#x2197; Booking</a>
+                            <a href="mailto:Bookings@jannowitz.com ">Booking</a>
                         </div>
                         {artist.pressKit && (
                             <div className="buttons">
