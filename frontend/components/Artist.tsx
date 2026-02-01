@@ -5,8 +5,7 @@ import {urlFor} from "@/sanity/image";
 import {ArtistBySlugQueryResult} from "@/sanity/types";
 import Link from "next/link";
 import {PortableText} from '@portabletext/react'
-import {Facebook, Instagram} from 'lucide-react'
-import {FaBandcamp, FaSpotify, FaTiktok, FaYoutube, FaSoundcloud} from 'react-icons/fa'
+import {FaBandcamp, FaSpotify, FaTiktok, FaYoutube, FaSoundcloud, FaFacebook, FaInstagram} from 'react-icons/fa'
 import {MdOutlineFileDownload} from "react-icons/md";
 import gsap from "gsap";
 import {Flip} from "gsap/Flip"
@@ -19,8 +18,8 @@ interface Props {
 
 const socialIcons: Record<string, React.ElementType> = {
     Bandcamp: FaBandcamp,
-    Facebook: Facebook,
-    Instagram: Instagram,
+    FaceBook: FaFacebook,
+    Instagram: FaInstagram,
     SoundCloud: FaSoundcloud,
     Spotify: FaSpotify,
     TikTok: FaTiktok,
@@ -75,7 +74,7 @@ const Artist = ({artist}: Props) => {
                     </div>
                     <div className="flex flex-col gap-5">
                         <div className="buttons">
-                            <a href="mailto:Bookings@jannowitz.com ">&#x2197; Booking</a>
+                            <a href="mailto:Bookings@jannowitz.com ">Booking</a>
                         </div>
                         {artist.pressKit && (
                             <div className="buttons">
