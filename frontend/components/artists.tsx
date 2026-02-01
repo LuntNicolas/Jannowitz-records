@@ -3,7 +3,6 @@ import {ArtistQueryResult} from "@/sanity/types";
 import Image from "next/image";
 import {urlFor} from "@/sanity/image";
 import Link from "next/link";
-import {MdArrowOutward} from "react-icons/md";
 
 interface Props {
     artists: ArtistQueryResult
@@ -46,8 +45,7 @@ const Artists = ({artists}: Props) => {
 
                                 <div className="artist-information ">
                                     <h2 className="text-white">{artist.name}</h2>
-                                    <p className="text-white opacity-50 flex items-center gap-1.5">View
-                                        more <MdArrowOutward/></p>
+                                    <p className="text-white opacity-50">View more &#x2197;</p>
                                 </div>
                             </Link>
                         </li>
