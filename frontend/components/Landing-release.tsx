@@ -100,7 +100,7 @@ const LandingRelease = ({releases}: Props) => {
                     <h1 className="text-white md:text-3xl text-xl">Our latest Releases</h1>
                     <p className="text-white/60 text-base opacity-70">Fresh tracks from our Artists</p>
                 </div>
-                <div className="hidden md:flex justify-end w-30">
+                <div className="md:flex justify-end w-30">
                     <Link className="whitespace-nowrap opacity-70 hover:opacity-100 transition duration-300"
                           href="/releases">View all &#8594;</Link>
                 </div>

@@ -25,7 +25,19 @@ export const artistQuery = defineQuery(`
       slug, 
       profileImage,
       bio, 
-      pressKit, 
+      pressKit,
       links
     }
 `)
+
+export const artistBySlugQuery = defineQuery(`
+  *[_type == "artists" && slug.current == $slug][0]{
+    _id,
+    name,
+    slug,
+    profileImage,
+    bio,
+    "pressKit": pressKit.asset->url, 
+    links
+  }
+`);

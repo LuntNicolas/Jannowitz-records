@@ -58,7 +58,9 @@ export default function RootLayout({
             className={`${gotham.variable} ${calora.variable} antialiased`}
         >
         <Menu/>
-        {children}
+        <main className="min-h-[calc(100vh-var(--navbar-height))]">
+            {children}
+        </main>
         <Footer/>
         <SanityLive/>
         </body>

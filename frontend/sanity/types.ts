@@ -330,7 +330,7 @@ export type PartnerQueryResult = Array<{
 
 // Source: ../frontend/sanity/queries.ts
 // Variable: artistQuery
-// Query: *[_type == "artists"]{      _id,       name,       slug,       profileImage,      bio,       pressKit,       links    }
+// Query: *[_type == "artists"]{      _id,       name,       slug,       profileImage,      bio,       pressKit,      links    }
 export type ArtistQueryResult = Array<{
   _id: string;
   name: string | null;
@@ -381,6 +381,55 @@ export type ArtistQueryResult = Array<{
   }> | null;
 }>;
 
+// Source: ../frontend/sanity/queries.ts
+// Variable: artistBySlugQuery
+// Query: *[_type == "artists" && slug.current == $slug][0]{    _id,    name,    slug,    profileImage,    bio,    "pressKit": pressKit.asset->url,     links  }
+export type ArtistBySlugQueryResult = {
+  _id: string;
+  name: string | null;
+  slug: Slug | null;
+  profileImage: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  bio: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }> | null;
+  pressKit: string | null;
+  links: Array<{
+    platform?:
+      | "Bandcamp"
+      | "Beatport"
+      | "FaceBook"
+      | "Instagram"
+      | "SoundCloud"
+      | "Spotify"
+      | "TikTok"
+      | "Youtube";
+    url?: string;
+    _type: "socialLink";
+    _key: string;
+  }> | null;
+} | null;
+
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
@@ -388,6 +437,7 @@ declare module "@sanity/client" {
     '\n    *[_type == "releases"] | order(_createdAt desc) [0...5]{\n        _id, catalog, cover, title, links\n    }\n ': LandingReleaseQueryResult;
     '\n    *[_type == "releases"] | order(_createdAt desc){\n        _id, catalog, cover, title, links, releaseDate\n    }\n ': ReleaseQueryResult;
     '\n    *[_type == "partners"]{\n        _id, partner, logo, link\n    }\n': PartnerQueryResult;
-    '\n    *[_type == "artists"]{\n      _id, \n      name, \n      slug, \n      profileImage,\n      bio, \n      pressKit, \n      links\n    }\n': ArtistQueryResult;
+    '\n    *[_type == "artists"]{\n      _id, \n      name, \n      slug, \n      profileImage,\n      bio, \n      pressKit,\n      links\n    }\n': ArtistQueryResult;
+    '\n  *[_type == "artists" && slug.current == $slug][0]{\n    _id,\n    name,\n    slug,\n    profileImage,\n    bio,\n    "pressKit": pressKit.asset->url, \n    links\n  }\n': ArtistBySlugQueryResult;
   }
 }

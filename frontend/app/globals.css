@@ -68,7 +68,15 @@ body {
     }
 
     .release-information {
-        @apply w-full pt-2;
+        @apply w-full pt-2 justify-center;
+    }
+
+    .artist-information {
+        @apply flex justify-center pt-3 md:justify-start w-full flex-col;
+    }
+
+    .buttons {
+        @apply flex justify-center text-black bg-white py-4 rounded-xl;
     }
 
     .gradient-edge:nth-of-type(1) {

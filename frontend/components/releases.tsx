@@ -81,7 +81,7 @@ const Releases = ({releases}: Props) => {
                     {releases.map((release) => (
                         <li key={release._id}>
                             <div
-                                className="flex items-center flex-col m-0 p-1 md:my-0 my-10 md:p-5 md:m-8">
+                                className="flex items-center flex-col m-0 p-1 md:my-0 my-10 md:p-5 md:m-8 w-max">
                                 {release.cover ? (
                                     <div className="image-gallery relative">
                                         <Image
