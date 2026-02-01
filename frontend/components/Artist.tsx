@@ -1,12 +1,11 @@
 "use client"
 
-import {useRef, useLayoutEffect} from 'react'
 import Image from "next/image";
 import {urlFor} from "@/sanity/image";
 import {ArtistBySlugQueryResult} from "@/sanity/types";
 import Link from "next/link";
 import {PortableText} from '@portabletext/react'
-import {Music, Radio, Facebook, Instagram, Cloud, Headphones, Video} from 'lucide-react'
+import {Facebook, Instagram} from 'lucide-react'
 import {FaBandcamp, FaSpotify, FaTiktok, FaYoutube, FaSoundcloud} from 'react-icons/fa'
 import {MdOutlineFileDownload} from "react-icons/md";
 import gsap from "gsap";
