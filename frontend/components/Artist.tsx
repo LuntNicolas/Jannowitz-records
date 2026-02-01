@@ -6,7 +6,7 @@ import {ArtistBySlugQueryResult} from "@/sanity/types";
 import Link from "next/link";
 import {PortableText} from '@portabletext/react'
 import {FaBandcamp, FaSpotify, FaTiktok, FaYoutube, FaSoundcloud, FaFacebook, FaInstagram} from 'react-icons/fa'
-import {MdOutlineFileDownload} from "react-icons/md";
+import {MdOutlineFileDownload, MdArrowOutward} from "react-icons/md";
 import gsap from "gsap";
 import {Flip} from "gsap/Flip"
 
@@ -74,7 +74,8 @@ const Artist = ({artist}: Props) => {
                     </div>
                     <div className="flex flex-col gap-5">
                         <div className="buttons">
-                            <a href="mailto:Bookings@jannowitz.com ">&#x2197; Booking</a>
+                            <a className="flex items-center justify-center w-full gap-1.5"
+                               href="mailto:Bookings@jannowitz.com "><MdArrowOutward/> Booking</a>
                         </div>
                         {artist.pressKit && (
                             <div className="buttons">
@@ -82,7 +83,7 @@ const Artist = ({artist}: Props) => {
                                     href={`${artist.pressKit}?dl=${artist.slug}-presskit.pdf`}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center justify-center w-full"
+                                    className="flex items-center justify-center w-full gap-1.5"
                                 >
                                     <MdOutlineFileDownload/>
                                     Presskit
