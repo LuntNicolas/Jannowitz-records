@@ -4,6 +4,7 @@ import "./globals.css";
 import Menu from "@/components/Menu";
 import {SanityLive} from "@/sanity/live";
 import Footer from "@/components/Footer";
+import {ViewTransitions} from 'next-view-transitions'
 
 const calora = localFont({
     src: [
@@ -53,17 +54,19 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
-        <body
-            className={`${gotham.variable} ${calora.variable} antialiased`}
-        >
-        <Menu/>
-        <main className="min-h-[calc(100vh-var(--navbar-height))]">
-            {children}
-        </main>
-        <Footer/>
-        <SanityLive/>
-        </body>
-        </html>
+        <ViewTransitions>
+            <html lang="en">
+            <body
+                className={`${gotham.variable} ${calora.variable} antialiased`}
+            >
+            <Menu/>
+            <main className="min-h-[calc(100vh-var(--navbar-height))]">
+                {children}
+            </main>
+            <Footer/>
+            <SanityLive/>
+            </body>
+            </html>
+        </ViewTransitions>
     );
 }

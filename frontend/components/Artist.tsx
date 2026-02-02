@@ -9,6 +9,7 @@ import {FaBandcamp, FaSpotify, FaTiktok, FaYoutube, FaSoundcloud, FaFacebook, Fa
 import {MdOutlineFileDownload} from "react-icons/md";
 import gsap from "gsap";
 import {Flip} from "gsap/Flip"
+import {useGSAP} from "@gsap/react";
 
 gsap.registerPlugin(Flip);
 
@@ -29,7 +30,16 @@ const socialIcons: Record<string, React.ElementType> = {
 const Artist = ({artist}: Props) => {
     const w = 800;
     const h = 800;
+    const imageFlip = document.querySelector('.image-flip')
 
+    useGSAP(() => {
+        const state = Flip.getState('.image-flip-state')
+
+        Flip.from(state, {
+            targets: imageFlip,
+            duration: 2,
+        })
+    })
 
     return (
         <section className="h-fit self-stretch mx-10 flex flex-col gap-10 mb-20">
@@ -46,7 +56,9 @@ const Artist = ({artist}: Props) => {
                             alt={artist.name || "Image"}
                             width={w}
                             height={h}
-                            className="md:w-96 md:h-96 w-full rounded-xl"
+                            className="md:w-96 md:h-96 w-full rounded-xl image-flip"
+                            data-flip-id={`img-${artist._id}`}
+                            style={{viewTransitionName: `artist-img-${artist._id}`}}
                         />
                     ) : (
                         <p>No image</p>

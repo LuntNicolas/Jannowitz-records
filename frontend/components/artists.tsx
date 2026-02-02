@@ -34,8 +34,9 @@ const Artists = ({artists}: Props) => {
                                             alt={artist.name || "Image"}
                                             width={w}
                                             height={h}
-                                            className="md:w-90 w-70 h-fit rounded-xl"
+                                            className="md:w-90 w-70 h-fit rounded-xl image-flip-state"
                                             data-flip-id={`img-${artist._id}`}
+                                            style={{viewTransitionName: `artist-img-${artist._id}`}}
                                         />
                                     </div>
                                 ) : (

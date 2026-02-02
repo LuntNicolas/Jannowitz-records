@@ -56,7 +56,7 @@ export const artists = defineType({
                         {
                             name: 'platform',
                             type: 'string',
-                            options: {list: ['Spotify', 'SoundCloud', 'Beatport', 'Bandcamp', 'Instagram', 'TikTok', 'FaceBook', 'Youtube']}
+                            options: {list: ['Spotify', 'SoundCloud', 'Beatport', 'Bandcamp', 'Instagram', 'TikTok', 'FaceBook', 'Youtube', 'WebSite']}
                         },
                         {name: 'url', type: 'url'}
                     ]
