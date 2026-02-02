@@ -269,7 +269,7 @@ type ArrayOf<T> = Array<
 
 // Source: ../frontend/sanity/queries.ts
 // Variable: landingReleaseQuery
-// Query: *[_type == "releases"] | order(_createdAt desc) [0...5]{        _id, catalog, cover, title, links    }
+// Query: *[_type == "releases"] | order(_createdAt desc) [0...4]{        _id, catalog, cover, title, links, releaseDate    }
 export type LandingReleaseQueryResult = Array<{
   _id: string;
   catalog: number | null;
@@ -287,6 +287,7 @@ export type LandingReleaseQueryResult = Array<{
     spotify?: string;
     _key: string;
   }> | null;
+  releaseDate: string | null;
 }>;
 
 // Source: ../frontend/sanity/queries.ts
@@ -434,7 +435,7 @@ export type ArtistBySlugQueryResult = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    '\n    *[_type == "releases"] | order(_createdAt desc) [0...5]{\n        _id, catalog, cover, title, links\n    }\n ': LandingReleaseQueryResult;
+    '\n    *[_type == "releases"] | order(_createdAt desc) [0...4]{\n        _id, catalog, cover, title, links, releaseDate\n    }\n ': LandingReleaseQueryResult;
     '\n    *[_type == "releases"] | order(_createdAt desc){\n        _id, catalog, cover, title, links, releaseDate\n    }\n ': ReleaseQueryResult;
     '\n    *[_type == "partners"]{\n        _id, partner, logo, link\n    }\n': PartnerQueryResult;
     '\n    *[_type == "artists"]{\n      _id, \n      name, \n      slug, \n      profileImage,\n      bio, \n      pressKit,\n      links\n    }\n': ArtistQueryResult;

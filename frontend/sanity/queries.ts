@@ -1,8 +1,8 @@
 import {defineQuery} from 'next-sanity'
 
 export const landingReleaseQuery = defineQuery(`
-    *[_type == "releases"] | order(_createdAt desc) [0...5]{
-        _id, catalog, cover, title, links
+    *[_type == "releases"] | order(_createdAt desc) [0...4]{
+        _id, catalog, cover, title, links, releaseDate
     }
  `)
 
