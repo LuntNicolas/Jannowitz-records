@@ -19,33 +19,16 @@ const Releases = ({releases}: Props) => {
     const h = 800;
     const container = useRef(null);
 
+    const getSpotifyEmbedUrl = (url: string | undefined) => {
+        if (!url) return null;
+        // Ersetzt "open.spotify.com/" durch "open.spotify.com/embed/"
+        return url.replace("open.spotify.com/", "open.spotify.com/embed/");
+    };
+
     useGSAP(() => {
         const images = gsap.utils.toArray<HTMLElement>(".image-gallery");
 
         // images.forEach((img, index) => {
-        //     gsap.fromTo(
-        //         img,
-        //         {
-        //             opacity: 0,
-        //             y: 80,
-        //             scale: 0.92,
-        //         }, {
-        //             opacity: 1,
-        //             y: 0,
-        //             scale: 1,
-        //             rotateX: 0,
-        //             duration: 1.2,
-        //             ease: "power4.out",
-        //             scrollTrigger: {
-        //                 trigger: img,
-        //                 start: "top 85%",
-        //                 end: "top 60%",
-        //                 toggleActions: "play none none none",
-        //                 once: true
-        //             },
-        //             delay: (index % 3) * 0.1
-        //         }
-        //     );
         //
         //     // Hover-Animation
         //     img.addEventListener('mouseenter', () => {
@@ -67,8 +50,6 @@ const Releases = ({releases}: Props) => {
         //     });
         // });
 
-        let scroll_tl = gsap.timeline();
-
         ScrollTrigger.batch(".image-gallery", {
             onEnter: batch => gsap.from(batch, {
                 y: 100,
@@ -79,27 +60,11 @@ const Releases = ({releases}: Props) => {
                 end: "top 60%",
             })
         })
-
-        // scroll_tl.fromTo(".image-gallery", {
-        //         //
-        //         // }, {
-        //         //     y: 0,
-        //         //     opacity: 1,
-        //         //
-        //         //     scrollTrigger: {
-        //         //         trigger: ".image-gallery",
-        //         //         start: "top 85%",
-        //         //         end: "top 60%",
-        //         //         toggleActions: "play none none none",
-        //         //         once: true,
-        //         //         markers: {startColor: "white", endColor: "white", fontSize: "18px", fontWeight: "bold", indent: 20}
-        //         //     }
-        //         // })
     }, []);
 
     return (
-        <section className="h-fit release-section" ref={container}>
-            <div className="self-stretch mt-20 mx-10">
+        <section className="h-fit release-section pt-5">
+            <div className="self-stretch mx-10">
                 <h1 className="text-2xl font-semibold text-white">Releases</h1>
                 <p className="text-gray-500">Explore our complete catalog of releases. Each record represents our
                     commitment to pushing the boundaries of techno music.</p>
@@ -120,50 +85,10 @@ const Releases = ({releases}: Props) => {
                                             height={h}
                                             className="md:w-90 w-70 h-fit rounded-xl"
                                         />
-                                        {/*<div className="absolute inset-0 flex flex-col justify-center items-center gap-3  bg-opacity-60 text-white font-bold text-5xl text-center z-10 duration-500 opacity-0 p-4">*/}
-                                        {/*    {release.links?.map((link) => (*/}
-                                        {/*        <div key={link._key} className="flex gap-4">*/}
-                                        {/*            {link.beatport && (*/}
-                                        {/*                <a*/}
-                                        {/*                    href={link.beatport}*/}
-                                        {/*                    target="_blank"*/}
-                                        {/*                    rel="noopener noreferrer"*/}
-                                        {/*                    className="underline"*/}
-                                        {/*                >*/}
-                                        {/*                    Beatport*/}
-                                        {/*                </a>*/}
-                                        {/*            )}*/}
-
-                                        {/*            {link.soundcloud && (*/}
-                                        {/*                <a*/}
-                                        {/*                    href={link.soundcloud}*/}
-                                        {/*                    target="_blank"*/}
-                                        {/*                    rel="noopener noreferrer"*/}
-                                        {/*                    className="underline"*/}
-                                        {/*                >*/}
-                                        {/*                    SoundCloud*/}
-                                        {/*                </a>*/}
-                                        {/*            )}*/}
-
-                                        {/*            {link.spotify && (*/}
-                                        {/*                <a*/}
-                                        {/*                    href={link.spotify}*/}
-                                        {/*                    target="_blank"*/}
-                                        {/*                    rel="noopener noreferrer"*/}
-                                        {/*                    className="underline"*/}
-                                        {/*                >*/}
-                                        {/*                    Spotify*/}
-                                        {/*                </a>*/}
-                                        {/*            )}*/}
-                                        {/*        </div>*/}
-                                        {/*    ))}*/}
-                                        {/*</div>*/}
                                     </div>
                                 ) : (
                                     <p>No image</p>
                                 )}
-
-
                                 <div className="release-information">
                                     <h2 className="text-white">{release.title}</h2>
                                     <p className="text-white opacity-50">{release.catalog}</p>

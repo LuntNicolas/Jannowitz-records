@@ -60,7 +60,7 @@ export default function RootLayout({
                 className={`${gotham.variable} ${calora.variable} antialiased`}
             >
             <Menu/>
-            <main className="min-h-[calc(100vh-var(--navbar-height))]">
+            <main className="pt-[var(--navbar-height)] min-h-screen">
                 {children}
             </main>
             <Footer/>

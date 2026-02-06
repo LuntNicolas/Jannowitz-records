@@ -5,6 +5,7 @@
     --foreground: #0B0D10;
     --font-gotham: "Gotham", sans-serif;
     --font-calora-normal: "Calora", serif;
+    --navbar-height: 64px;
 }
 
 @theme {

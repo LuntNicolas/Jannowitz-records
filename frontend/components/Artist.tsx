@@ -44,7 +44,7 @@ const Artist = ({artist}: Props) => {
 
     return (
         <section className="h-fit self-stretch mx-10 flex flex-col gap-10 mb-20">
-            <div className="self-stretch mt-20 md:mx-10 mx-0">
+            <div className="self-stretch pt-5 md:mx-10 mx-0">
                 <Link href={"/artists"}>
                     <p className="text-white opacity-50">&#x2190; Back to artists</p>
                 </Link>

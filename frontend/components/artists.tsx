@@ -33,7 +33,7 @@ const Artists = ({artists}: Props) => {
 
     return (
         <section className="h-fit">
-            <div className="self-stretch mt-20 mx-10">
+            <div className="self-stretch pt-5 mx-10">
                 <h1 className="text-2xl font-semibold text-white">Artists</h1>
                 <p className="text-gray-500">Meet the talented artists who define the Jannowitz Records sound. Each
                     brings their unique vision to our label.</p>
