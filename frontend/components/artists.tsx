@@ -1,8 +1,15 @@
+'use client'
+
 import React from 'react'
 import {ArtistQueryResult} from "@/sanity/types";
 import Image from "next/image";
 import {urlFor} from "@/sanity/image";
 import Link from "next/link";
+import gsap from "gsap";
+import {useGSAP} from '@gsap/react';
+import {ScrollTrigger} from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger)
 
 interface Props {
     artists: ArtistQueryResult
@@ -11,6 +18,18 @@ interface Props {
 const Artists = ({artists}: Props) => {
     const w = 800;
     const h = 800;
+
+    useGSAP(() => {
+
+        ScrollTrigger.batch(".image-gallery", {
+            onEnter: batch => gsap.from(batch, {
+                y: 100,
+                stagger: 0.1,
+                ease: "power1.out",
+                opacity: 0,
+            })
+        })
+    }, [])
 
     return (
         <section className="h-fit">
@@ -21,14 +40,14 @@ const Artists = ({artists}: Props) => {
             </div>
 
             <div className="w-full px-10 my-10">
-                <ul className="flex h-fit w-full flex-wrap">
+                <ul className="flex h-fit w-full flex-wrap artist-list">
                     {artists.map((artist) => (
-                        <li key={artist._id} className="w-fit">
+                        <li key={artist._id} className="w-fit image-gallery">
                             <Link
                                 className="flex items-center flex-col m-0 p-1 md:my-0 my-10 md:p-5 md:m-8 w-max"
                                 href={`/artists/${artist.slug?.current}`}>
                                 {artist.profileImage ? (
-                                    <div className="image-gallery relative ">
+                                    <div className=" relative ">
                                         <Image
                                             src={urlFor(artist.profileImage).width(w).height(h).url()}
                                             alt={artist.name || "Image"}

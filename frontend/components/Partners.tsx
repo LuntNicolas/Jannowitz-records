@@ -12,14 +12,15 @@ const Partners = ({partners}: Props) => {
     const height = 200;
 
     return (
-        <div className="mb-20 relative">
-            <div className="flex justify-center md:justify-between md:ml-10 mt-20 items-center">
+        <section className="mb-20 relative">
+
+            <div className="flex justify-center md:justify-between md:ml-10 mb-5 items-center">
                 <h1 className="text-white md:text-3xl text-xl">Our Partners</h1>
             </div>
-            <div className="gradient-edge"/>
-            <div className="gradient-edge"/>
 
             <div className="marquee h-52">
+                <div className="gradient-edge"/>
+                <div className="gradient-edge"/>
                 <div className="marquee-box md:gap-20 gap-10">
                     {partners.map((partner) => (
                         partner.logo ? (
@@ -51,7 +52,7 @@ const Partners = ({partners}: Props) => {
                     ))}
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
 export default Partners

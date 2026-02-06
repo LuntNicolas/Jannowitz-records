@@ -64,7 +64,7 @@ body {
     }
 
     .gradient-edge {
-        @apply md:w-100 w-30 h-full absolute bottom-0 z-20
+        @apply md:w-100 w-30 h-full absolute bottom-0 z-20;
     }
 
     .release-information {
