@@ -8,10 +8,10 @@ import {PortableText} from '@portabletext/react'
 import {FaBandcamp, FaSpotify, FaTiktok, FaYoutube, FaSoundcloud, FaFacebook, FaInstagram} from 'react-icons/fa'
 import {MdOutlineFileDownload} from "react-icons/md";
 import gsap from "gsap";
-import {Flip} from "gsap/Flip"
 import {useGSAP} from "@gsap/react";
+import {SplitText} from "gsap/SplitText";
 
-gsap.registerPlugin(Flip);
+gsap.registerPlugin(SplitText)
 
 interface Props {
     artist: NonNullable<ArtistBySlugQueryResult>;
@@ -30,20 +30,21 @@ const socialIcons: Record<string, React.ElementType> = {
 const Artist = ({artist}: Props) => {
     const w = 800;
     const h = 800;
-    const imageFlip = document.querySelector('.image-flip')
 
     useGSAP(() => {
-        const state = Flip.getState('.image-flip-state')
+        let biography = SplitText.create(".Biography", {type: "words, lines"})
 
-        Flip.from(state, {
-            targets: imageFlip,
-            duration: 2,
+        gsap.from(biography.lines, {
+            duration: 0.8,
+            y: 100,       // animate from 100px below
+            autoAlpha: 0, // fade in from opacity: 0 and visibility: hidden
+            stagger: 0.05 // 0.05 seconds between each
         })
     })
 
     return (
         <section className="h-fit self-stretch mx-10 flex flex-col gap-10 mb-20">
-            <div className="self-stretch mt-20 md:mx-10 mx-0">
+            <div className="self-stretch pt-5 md:mx-10 mx-0">
                 <Link href={"/artists"}>
                     <p className="text-white opacity-50">&#x2190; Back to artists</p>
                 </Link>
@@ -107,7 +108,8 @@ const Artist = ({artist}: Props) => {
                     <h1 className="text-3xl font-bold">{artist.name}</h1>
                     <div className="md:w-150 w-75 flex flex-col gap-5 leading-6">
                         <h2 className="text-2xl">Biography</h2>
-                        {artist.bio && <div className="leading-7 opacity-70"><PortableText value={artist.bio}/></div>}
+                        {artist.bio &&
+                            <div className="Biography leading-7 opacity-70"><PortableText value={artist.bio}/></div>}
                     </div>
                 </div>
             </div>

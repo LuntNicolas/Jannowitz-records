@@ -26,8 +26,8 @@ const Menu = () => {
         tl.current = gsap.timeline({paused: true})
             .to("#overlay-menu", {
                 height: "100vh",
-                duration: 1,
-                ease: "expo.out",
+                duration: 0.75,
+                ease: "power1.out",
             })
 
             .fromTo(".menu-link-item-holder, .socials",
