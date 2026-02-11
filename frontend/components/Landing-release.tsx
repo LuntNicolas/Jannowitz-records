@@ -177,12 +177,13 @@ const LandingRelease = ({releases}: Props) => {
                             )}
                         </div>
                     </div>
-                    <div className="meta-info flex flex-col md:gap-10 gap-4 z-10 justif">
-                        <h1 key={currentRelease}
+                    <div key={currentRelease} className="meta-info flex flex-col md:gap-10 gap-4 z-10 justif">
+                        <h1
                             className="text-white text-bold md:text-6xl text-xl release-title font-bold md:text-left text-center">
                             {title?.toUpperCase()}
                         </h1>
-                        <h2 className="release-title text-white opacity-80 text-sm md:text-left text-center">{artist}</h2>
+                        <h2
+                            className="release-title text-white opacity-80 text-sm md:text-left text-center">{artist}</h2>
                         {/*<div className="flex gap-5">*/}
                         {/*    {links?.map((link) => {*/}
                         {/*        if (!link.platform || !link.url) return null;*/}
