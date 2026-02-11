@@ -46,6 +46,21 @@ const gotham = localFont({
 export const metadata: Metadata = {
     title: "Jannowitz Records",
     description: "Techno Label in Berlin",
+    openGraph: {
+        title: 'Jannowitz Records',
+        description: 'Techno Label in Berlin',
+        url: 'https://jannowitz-records-git-main-lennart-lunts-projects.vercel.app',
+        siteName: 'Jannowitz Records',
+        images: [
+            {
+                url: 'https://jannowitz-records-git-main-lennart-lunts-projects.vercel.app/og-preview.png', // Absoluter Pfad!
+                width: 1200,
+                height: 630,
+            },
+        ],
+        locale: 'de_DE',
+        type: 'website',
+    },
 };
 
 export default function RootLayout({
