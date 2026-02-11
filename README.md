@@ -1,8 +1,7 @@
 ## Jannowitz Records – Label Website
 
-A professional, high-performance web platform built for the techno label Jannowitz Records. This project focuses on seamless content management, artist discovery, and a premium visual identity.
-[**Live Demo**](https://jannowitz-records-git-main-lennart-lunts-projects.vercel.app) | [**GitHub Repo**]([https://github.com/luntnicolas/030Streams-Website](https://github.com/LuntNicolas/Jannowitz-records#))
-
+A professional web platform built for the techno label Jannowitz Records. This project focuses on seamless content management, artist discovery, and a premium visual identity.
+[**Live Demo**](https://jannowitz-records-git-main-lennart-lunts-projects.vercel.app) | [**GitHub Repo**](https://github.com/LuntNicolas/Jannowitz-records)
 
 ## Key Features
 
@@ -25,3 +24,10 @@ A professional, high-performance web platform built for the techno label Jannowi
 ## Technical Challenge: The Bridge between CMS & Code
 
 The main goal was to create a system where non-technical team members could update the label’s catalog without touching the code. I designed a modular schema in Sanity, which is consumed by the Next.js frontend to build a highly performant, SEO-friendly site that scales with the label's growing discography.
+
+
+## The Client
+**Jannowitz Records**, founded by the renowned artist **BOHO**, is a prominent international techno label known for its minimal and high-tech sound. I developed this platform to translate their dark, sophisticated aesthetic into a high-end digital experience.
+
+* **Label:** [Jannowitz Records on Instagram](https://www.instagram.com/jannowitz_records/)
+* **Founder:** [BOHO on Instagram](https://www.instagram.com/boho_jannowitz/)
