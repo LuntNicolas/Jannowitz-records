@@ -29,5 +29,5 @@ The main goal was to create a system where non-technical team members could upda
 ## The Client
 **Jannowitz Records**, founded by the renowned artist **BOHO**, is a prominent international techno label known for its minimal and high-tech sound. I developed this platform to translate their dark, sophisticated aesthetic into a high-end digital experience.
 
-* **Label:** [Jannowitz Records on Instagram](https://www.instagram.com/jannowitz_records/)
-* **Founder:** [BOHO on Instagram](https://www.instagram.com/boho_jannowitz/)
+* **Label:** [Jannowitz Records on Instagram]((https://www.instagram.com/jannowitz_records?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==))
+* **Founder:** [BOHO on Instagram](https://www.instagram.com/boho_jaw?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==)
