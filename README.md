@@ -9,7 +9,6 @@ A professional web platform built for the techno label Jannowitz Records. This p
 * **Next.js Architecture:** Leveraged Server-Side Rendering (SSR) and Incremental Static Regeneration (ISR) for lightning-fast page loads and optimal SEO.
 * **Dynamic Artist Profiles:** Automated generation of artist pages based on CMS data, ensuring a consistent look across the entire roster.
 * **Immersive UI Animations:** Used GSAP to implement sophisticated transitions and micro-interactions that reflect the label's aesthetic.
-* **Global Audio Integration:** (Falls du einen Player hast:) Integrated a global audio state to allow users to browse the catalog while listening to previews.
 
 
 ## TechStack
