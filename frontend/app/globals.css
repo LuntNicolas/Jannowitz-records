@@ -41,7 +41,6 @@ body {
     font-family: var(--font-gotham);
 }
 
-
 @layer components {
 
     .wrapper {
@@ -50,6 +49,10 @@ body {
 
     .slider-container {
         @apply flex whitespace-nowrap;
+    }
+
+    .slider {
+        @apply md:h-80 md:w-80 h-50 w-50 absolute inset-0 rounded-lg ;
     }
 
     .slider-overlay {
@@ -85,7 +88,7 @@ body {
         background: rgb(0, 0, 0);
         background: linear-gradient(
                 90deg,
-                rgba(0, 0, 0, 1) 0%,
+                #0B0D10 0%,
                 rgba(255, 255, 255, 0) 100%
         );
     }
@@ -94,7 +97,7 @@ body {
         right: 0;
         background: linear-gradient(
                 -90deg,
-                rgba(0, 0, 0, 1) 0%,
+                #0B0D10 0%,
                 rgba(255, 255, 255, 0) 100%
         );
     }

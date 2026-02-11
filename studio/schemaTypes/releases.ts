@@ -16,17 +16,11 @@ export const releases = defineType({
         }),
 
         //Artist
-        // defineField({
-        //     name: 'artist',
-        //     title: 'Artists',
-        //     type: 'array',
-        //     of: [
-        //         {
-        //             type: 'reference',
-        //             to: [{type: 'artists', name: 'artists'}],
-        //         }
-        //     ]
-        // }),
+        defineField({
+            name: 'artist',
+            title: 'Artists',
+            type: 'string',
+        }),
 
         //Katalog Nummer
         defineField({

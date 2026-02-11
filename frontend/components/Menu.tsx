@@ -86,7 +86,7 @@ const Menu = () => {
 
     return (
         <div className="menu-container" ref={container}>
-            <nav className="fixed top-0 w-screen p-2 grid grid-cols-3 z-20 bg-background">
+            <nav className="fixed top-0 w-screen p-2 grid grid-cols-3 z-80 bg-background">
                 <div className="col-start-2 flex items-center justify-center">
                     <Link href="/">
                         <Image
@@ -114,7 +114,7 @@ const Menu = () => {
             </nav>
 
             <div id="overlay-menu"
-                 className="fixed top-0 left-0 w-screen h-0 p-2 bg-background  z-10 flex items-center flex-col overflow-hidden">
+                 className="fixed top-0 left-0 w-screen h-0 p-2 bg-background  z-70 flex items-center flex-col overflow-hidden">
                 <div className="font-calora pt-25">
                     {menuLinks.map((link, index) => (
                         <div className="menu-link-item" key={index}>

@@ -74,7 +74,8 @@ export type Artists = {
       | "Instagram"
       | "TikTok"
       | "FaceBook"
-      | "Youtube";
+      | "Youtube"
+      | "WebSite";
     url?: string;
     _type: "socialLink";
     _key: string;
@@ -127,6 +128,7 @@ export type Releases = {
   _updatedAt: string;
   _rev: string;
   title?: string;
+  artist?: string;
   catalog?: number;
   releaseDate?: string;
   cover?: {
@@ -261,15 +263,9 @@ export type AllSanitySchemaTypes =
 
 export declare const internalGroqTypeReferenceTo: unique symbol;
 
-type ArrayOf<T> = Array<
-  T & {
-    _key: string;
-  }
->;
-
 // Source: ../frontend/sanity/queries.ts
 // Variable: landingReleaseQuery
-// Query: *[_type == "releases"] | order(_createdAt desc) [0...4]{        _id, catalog, cover, title, links, releaseDate    }
+// Query: *[_type == "releases"] | order(_createdAt desc) [0...4]{        _id, catalog, cover, title, artist, links, releaseDate    }
 export type LandingReleaseQueryResult = Array<{
   _id: string;
   catalog: number | null;
@@ -281,6 +277,7 @@ export type LandingReleaseQueryResult = Array<{
     _type: "image";
   } | null;
   title: string | null;
+  artist: string | null;
   links: Array<{
     beatport?: string;
     soundcloud?: string;
@@ -292,7 +289,7 @@ export type LandingReleaseQueryResult = Array<{
 
 // Source: ../frontend/sanity/queries.ts
 // Variable: releaseQuery
-// Query: *[_type == "releases"] | order(_createdAt desc){        _id, catalog, cover, title, links, releaseDate    }
+// Query: *[_type == "releases"] | order(_createdAt desc){        _id, catalog, cover, title, artist, links, releaseDate    }
 export type ReleaseQueryResult = Array<{
   _id: string;
   catalog: number | null;
@@ -304,6 +301,7 @@ export type ReleaseQueryResult = Array<{
     _type: "image";
   } | null;
   title: string | null;
+  artist: string | null;
   links: Array<{
     beatport?: string;
     soundcloud?: string;
@@ -375,6 +373,7 @@ export type ArtistQueryResult = Array<{
       | "SoundCloud"
       | "Spotify"
       | "TikTok"
+      | "WebSite"
       | "Youtube";
     url?: string;
     _type: "socialLink";
@@ -424,6 +423,7 @@ export type ArtistBySlugQueryResult = {
       | "SoundCloud"
       | "Spotify"
       | "TikTok"
+      | "WebSite"
       | "Youtube";
     url?: string;
     _type: "socialLink";
@@ -435,8 +435,8 @@ export type ArtistBySlugQueryResult = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    '\n    *[_type == "releases"] | order(_createdAt desc) [0...4]{\n        _id, catalog, cover, title, links, releaseDate\n    }\n ': LandingReleaseQueryResult;
-    '\n    *[_type == "releases"] | order(_createdAt desc){\n        _id, catalog, cover, title, links, releaseDate\n    }\n ': ReleaseQueryResult;
+    '\n    *[_type == "releases"] | order(_createdAt desc) [0...4]{\n        _id, catalog, cover, title, artist, links, releaseDate\n    }\n ': LandingReleaseQueryResult;
+    '\n    *[_type == "releases"] | order(_createdAt desc){\n        _id, catalog, cover, title, artist, links, releaseDate\n    }\n ': ReleaseQueryResult;
     '\n    *[_type == "partners"]{\n        _id, partner, logo, link\n    }\n': PartnerQueryResult;
     '\n    *[_type == "artists"]{\n      _id, \n      name, \n      slug, \n      profileImage,\n      bio, \n      pressKit,\n      links\n    }\n': ArtistQueryResult;
     '\n  *[_type == "artists" && slug.current == $slug][0]{\n    _id,\n    name,\n    slug,\n    profileImage,\n    bio,\n    "pressKit": pressKit.asset->url, \n    links\n  }\n': ArtistBySlugQueryResult;

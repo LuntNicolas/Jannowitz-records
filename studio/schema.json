@@ -409,6 +409,10 @@
                     {
                       "type": "string",
                       "value": "Youtube"
+                    },
+                    {
+                      "type": "string",
+                      "value": "WebSite"
                     }
                   ]
                 },
@@ -698,6 +702,13 @@
         }
       },
       "title": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
+      "artist": {
         "type": "objectAttribute",
         "value": {
           "type": "string"

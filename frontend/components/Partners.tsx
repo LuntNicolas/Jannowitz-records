@@ -18,7 +18,7 @@ const Partners = ({partners}: Props) => {
                 <h1 className="text-white md:text-3xl text-xl">Our Partners</h1>
             </div>
 
-            <div className="marquee h-52">
+            <div className="marquee md:h-32 h-20">
                 <div className="gradient-edge"/>
                 <div className="gradient-edge"/>
                 <div className="marquee-box md:gap-20 gap-10">
@@ -30,7 +30,7 @@ const Partners = ({partners}: Props) => {
                                 alt={partner._id}
                                 width={width}
                                 height={height}
-                                className="bg-white size-20 md:size-30"
+                                className="bg-white size-10 md:size-20"
                             />
                         ) : (
                             <div>No Image</div>
