@@ -28,6 +28,14 @@
     }
 }
 
+@utility flex-center {
+    @apply flex justify-center items-center;
+}
+
+@utility flex-around {
+    @apply flex justify-around items-center;
+}
+
 @media (prefers-color-scheme: dark) {
     :root {
         --background: #0B0D10;
@@ -81,6 +89,50 @@ body {
 
     .buttons {
         @apply flex justify-center text-black bg-white py-4 rounded-xl opacity-100 hover:opacity-80 transition-opacity duration-500;
+    }
+
+    #about-section {
+        @apply text-white h-max flex-center;
+
+        .about {
+            @apply flex md:max-w-3xl max-w-xs flex-col gap-14 my-10 justify-center;
+
+            .description {
+                @apply flex flex-col gap-5;
+
+                h3 {
+                    @apply text-2xl;
+                }
+
+                p {
+                    @apply opacity-70 font-normal text-sm/8 overflow-hidden;
+                }
+            }
+
+            .mission {
+                @apply p-7 bg-white/5 outline-1 outline-offset-[-1px] outline-white/10 inline-flex flex-col gap-4 overflow-hidden;
+
+                h2 {
+                    @apply font-semibold text-2xl;
+                }
+
+                p {
+                    @apply opacity-70 font-normal text-sm/8;
+                }
+            }
+
+            .demo {
+                @apply p-7 bg-white/5 outline-1 outline-offset-[-1px] outline-white/10 inline-flex md:flex-row flex-col gap-4 md:flex-around overflow-hidden;
+
+                .demo-text {
+                    @apply flex justify-center font-semibold md:text-2xl gap-3 text-lg;
+                }
+
+                .submit-demo {
+                    @apply inline-flex items-center gap-3 text-black bg-white w-fit p-5 rounded-sm text-sm md:text-base;
+                }
+            }
+        }
     }
 
     .gradient-edge:nth-of-type(1) {
