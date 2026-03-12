@@ -36,7 +36,6 @@ export const releases = defineType({
             title: 'Release Datum',
             type: 'date',
             options: {dateFormat: 'DD.MM.YYYY'},
-            validation: (Rule) => Rule.required(),
         }),
 
         // Cover art
