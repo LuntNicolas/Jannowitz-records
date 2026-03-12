@@ -803,6 +803,13 @@
                   "type": "string"
                 },
                 "optional": true
+              },
+              "bandcamp": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "string"
+                },
+                "optional": true
               }
             },
             "rest": {
