@@ -59,6 +59,7 @@ export const releases = defineType({
                         {name: "beatport", title: "Beatport", type: "url", placeholder: "Beatport Link"},
                         {name: "soundcloud", title: "SoundCloud", type: "url", placeholder: "Soundcloud Link"},
                         {name: "spotify", type: "url", placeholder: "Spotify Link"},
+                        {name: "bandcamp", type: "url", placeholder: "Bandcamp Link"},
                     ],
                 }
             ],

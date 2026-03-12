@@ -142,6 +142,7 @@ export type Releases = {
     beatport?: string;
     soundcloud?: string;
     spotify?: string;
+    bandcamp?: string;
     _key: string;
   }>;
 };
@@ -282,6 +283,7 @@ export type LandingReleaseQueryResult = Array<{
     beatport?: string;
     soundcloud?: string;
     spotify?: string;
+    bandcamp?: string;
     _key: string;
   }> | null;
   releaseDate: string | null;
@@ -306,6 +308,7 @@ export type ReleaseQueryResult = Array<{
     beatport?: string;
     soundcloud?: string;
     spotify?: string;
+    bandcamp?: string;
     _key: string;
   }> | null;
   releaseDate: string | null;

@@ -16,14 +16,27 @@ A professional web platform built for the techno label Jannowitz Records. This p
 * **Frontend:** Next.js (React)
 * **CMS:** Sanity.io (GROQ for querying)
 * **Styling:** Tailwind CSS
-* **Animation:** GSAP
-* **Deployment:** Vercel
+* **Animation:** [GSAP](https://gsap.com)
+* **Deployment:** [Vercel](https://vercel.com/lennart-lunts-projects)
 
 
-## Technical Challenge: The Bridge between CMS & Code
+## Project Overview
 
-The main goal was to create a system where non-technical team members could update the label’s catalog without touching the code. I designed a modular schema in Sanity, which is consumed by the Next.js frontend to build a highly performant, SEO-friendly site that scales with the label's growing discography.
+The frontend application and CMS Studio are maintained as separate environments.
 
+**Local development:**
+Run ```npm run dev``` in the respective project directories.
+* Frontend: http://localhost:3000
+* Studio: http://localhost:3333
+
+Type generation (Sanity schemas):
+```
+npx sanity@latest schema extract
+npx sanity@latest typegen generate
+```
+
+**Deployment:**
+Push the main branch to the repository; automated deployment runs via Vercel.
 
 ## The Client
 **Jannowitz Records**, founded by the renowned artist **BOHO**, is a prominent international techno label known for its minimal and high-tech sound. I developed this platform to translate their dark, sophisticated aesthetic into a high-end digital experience.
