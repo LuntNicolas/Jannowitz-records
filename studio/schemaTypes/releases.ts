@@ -65,4 +65,13 @@ export const releases = defineType({
             ],
         }),
     ],
+    orderings: [
+        {
+            title: 'Katalog Nummer',
+            name: 'catalog',
+            by: [
+                {field: 'catalog', direction: 'asc'}
+            ]
+        }
+    ]
 })
