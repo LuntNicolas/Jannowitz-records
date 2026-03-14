@@ -10,7 +10,7 @@
     "build": "sanity build",
     "deploy": "sanity deploy",
     "deploy-graphql": "sanity graphql deploy",
-    "prebuild": "pnpm run typegen --enforce-required-fields",
+    "prebuild": "npm run typegen --enforce-required-fields",
     "typegen": "sanity schema extract && sanity typegen generate --enforce-required-fields"
   },
   "keywords": [
