@@ -12,6 +12,8 @@
  * ---------------------------------------------------------------------------------
  */
 
+export declare const internalGroqTypeReferenceTo: unique symbol;
+
 // Source: schema.json
 export type SanityImageAssetReference = {
   _ref: string;
@@ -147,6 +149,8 @@ export type Releases = {
   }>;
 };
 
+export type UniqueString = string;
+
 export type SanityImagePaletteSwatch = {
   _type: "sanity.imagePaletteSwatch";
   background?: string;
@@ -253,6 +257,7 @@ export type AllSanitySchemaTypes =
   | Slug
   | Partners
   | Releases
+  | UniqueString
   | SanityImagePaletteSwatch
   | SanityImagePalette
   | SanityImageDimensions
@@ -261,8 +266,6 @@ export type AllSanitySchemaTypes =
   | SanityAssetSourceData
   | SanityImageAsset
   | Geopoint;
-
-export declare const internalGroqTypeReferenceTo: unique symbol;
 
 // Source: ../frontend/sanity/queries.ts
 // Variable: landingReleaseQuery

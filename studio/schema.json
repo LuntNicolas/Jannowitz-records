@@ -830,6 +830,13 @@
     }
   },
   {
+    "name": "unique:string",
+    "type": "type",
+    "value": {
+      "type": "string"
+    }
+  },
+  {
     "name": "sanity.imagePaletteSwatch",
     "type": "type",
     "value": {
